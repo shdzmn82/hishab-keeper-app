@@ -22,6 +22,10 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
+    - name: Generate Gradle Wrapper
+      working-directory: ./app_project
+      run: gradle wrapper --gradle-version 8.1.0
+
     - name: Make gradlew executable
       working-directory: ./app_project
       run: chmod +x gradlew
@@ -34,4 +38,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: HishabKeeper-App
+        path: app_project/app/build/outputs/apk/debug/app-debug.apk
         path: app_project/app/build/outputs/apk/debug/app-debug.apk
